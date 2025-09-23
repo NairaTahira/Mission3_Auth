@@ -64,6 +64,7 @@
     .footer-text a:hover {
       text-decoration: underline;
     }
+    
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -87,7 +88,8 @@
       <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
     <?php endif; ?>
 
-    <form method="post" action="/auth/checkLogin" novalidate>
+    <!-- Login Form -->
+    <form id="loginForm" method="post" action="/auth/checkLogin" novalidate>
       <div class="mb-3">
         <label for="username" class="form-label">Username </label>
         <input type="text" 
@@ -98,6 +100,7 @@
                required
                autocomplete="off"
                placeholder="Enter your Username">
+        <div class="invalid-feedback">Username is required (max 50 chars).</div>
         <small class="text-muted">(Max 50 characters)</small>
       </div>
 
@@ -111,6 +114,7 @@
                required
                autocomplete="new-password"
                placeholder="Enter your password">
+        <div class="invalid-feedback">Password must be at least 8 characters.</div>
         <small class="text-muted">(Min 8 characters)</small>
       </div>
 
@@ -124,6 +128,22 @@
     </div>
   </div>
 </div>
+
+<script>
+  // Bootstrap style validation
+  (function () {
+    'use strict'
+    const form = document.getElementById('loginForm');
+
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add('was-validated');
+    }, false);
+  })();
+</script>
 
 </body>
 </html>

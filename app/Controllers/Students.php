@@ -13,9 +13,13 @@ class Students extends BaseController
         $this->model = new RecordsModel();
     }
 
-    // List all students
+    // List all students (admin only)
     public function index()
     {
+        if (session()->get('role') !== 'admin') {
+            return redirect()->to('/home');
+        }
+
         $studentModel = new StudentModel();
         $students = $studentModel->findAll();
 
@@ -27,9 +31,15 @@ class Students extends BaseController
     }
 
     // View a single student and their enrolled courses
-    public function view($id)
+    public function view($id = null)
     {
         $studentModel = new StudentModel();
+
+        // If logged in as student → force their own ID
+        if (session()->get('role') === 'student') {
+            $id = session()->get('user_id');
+        }
+
         $student = $studentModel->find($id);
 
         if (!$student) {
@@ -42,7 +52,8 @@ class Students extends BaseController
             ->select('takes.id as enrollment_id, courses.course_code, courses.course_name, courses.credits')
             ->join('courses', 'takes.course_id = courses.id')
             ->where('takes.student_id', $id)
-            ->get()->getResultArray();
+            ->get()
+            ->getResultArray();
 
         $data = [
             'title'   => 'Student Detail',

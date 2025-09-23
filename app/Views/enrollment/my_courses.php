@@ -22,17 +22,31 @@
         </thead>
         <tbody>
           <?php if (!empty($courses)): ?>
-            <?php foreach ($courses as $i => $c): ?>
+            <?php 
+              $totalSKS = 0; // counter
+              foreach ($courses as $i => $c): 
+                $totalSKS += $c['credits']; 
+            ?>
               <tr>
                 <td><?= $i+1 ?></td>
                 <td class="fw-bold text-primary"><?= esc($c['course_code']) ?></td>
                 <td><?= esc($c['course_name']) ?></td>
                 <td><span class="badge bg-primary"><?= esc($c['credits']) ?></span></td>
+                <td class="text-center">
+                </td>
               </tr>
             <?php endforeach; ?>
+
+            <!-- Total SKS Row -->
+            <tr>
+              <td colspan="5" class="text-end pe-4">
+                <strong>Total SKS: <?= $totalSKS ?></strong>
+              </td>
+            </tr>
+
           <?php else: ?>
             <tr>
-              <td colspan="3" class="text-center text-muted py-4">
+              <td colspan="5" class="text-center text-muted py-4">
                 <i class="bi bi-exclamation-circle"></i> Belum ada mata kuliah diambil
               </td>
             </tr>
@@ -41,5 +55,7 @@
       </table>
     </div>
   </div>
-
 </div>
+
+<!-- JS -->
+<script src="/js/enrollment.js"></script>

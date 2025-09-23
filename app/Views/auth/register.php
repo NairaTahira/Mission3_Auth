@@ -86,21 +86,46 @@
       <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
     <?php endif; ?>
 
-    <form method="post" action="/auth/storeRegister" novalidate>
+    <form id="registerForm" class="needs-validation" method="post" action="/auth/storeRegister" novalidate>
+      <!-- Student Name -->
       <div class="mb-3">
         <label for="name" class="form-label">Student Name</label>
-        <input type="text" class="form-control" id="name" name="name" required>
+        <input type="text" 
+               class="form-control" 
+               id="name" 
+               name="name" 
+               minlength="3" 
+               maxlength="50" 
+               required>
+        <div class="invalid-feedback">Student name is required (3–50 characters).</div>
       </div>
 
+      <!-- NIM -->
       <div class="mb-3">
         <label for="nim" class="form-label">NIM</label>
-        <input type="text" class="form-control" id="nim" name="nim" required>
+        <input type="text" 
+               class="form-control" 
+               id="nim" 
+               name="nim" 
+               pattern="^[0-9]{8,12}$" 
+               minlength="8" 
+               maxlength="12" 
+               required>
+        <div class="invalid-feedback">NIM must be 8–12 digits.</div>
         <small class="text-muted">This will also serve as your password</small>
       </div>
 
+      <!-- Email -->
       <div class="mb-3">
         <label for="email" class="form-label">Email (Polban)</label>
-        <input type="email" class="form-control" id="email" name="email" required>
+        <input type="email" 
+               class="form-control" 
+               id="email" 
+               name="email" 
+               pattern="^[a-zA-Z0-9._%+-]+@polban\.ac\.id$" 
+               maxlength="100" 
+               required>
+        <div class="invalid-feedback">Enter a valid Polban email (example@polban.ac.id).</div>
       </div>
 
       <button type="submit" class="btn btn-success w-100">
@@ -113,6 +138,21 @@
     </div>
   </div>
 </div>
+
+<!-- Bootstrap validation script -->
+<script>
+  (() => {
+    'use strict';
+    const form = document.getElementById('registerForm');
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add('was-validated');
+    }, false);
+  })();
+</script>
 
 </body>
 </html>

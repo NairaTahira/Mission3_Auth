@@ -43,3 +43,7 @@ $routes->group('', ['filter' => 'authguard'], static function ($routes) {
         $routes->get('delete/(:num)', 'Takes::delete/$1');
     });
 });
+
+// Submit Enrollment
+$routes->get('/enroll', 'Enrollment::selectCourses');
+$routes->post('/enroll/submit', 'Enrollment::submit');

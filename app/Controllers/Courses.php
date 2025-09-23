@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\CourseModel;  
+use App\Models\TakesModel;
 
 class Courses extends BaseController
 {
@@ -14,17 +15,28 @@ class Courses extends BaseController
 
     public function index()
     {
-        $courseModel = new \App\Models\CourseModel();
+        $courseModel = new CourseModel();
+        $takeModel   = new TakesModel();
+
         $courses = $courseModel->findAll();
+        $enrolledIds = [];
+
+        if (session()->get('role') === 'student') {
+            $studentId = session()->get('user_id');
+            $enrolled  = $takeModel->where('student_id', $studentId)->findAll();
+            $enrolledIds = array_column($enrolled, 'course_id');
+        }
 
         $data = [
-            'title'   => 'Courses',
-            'content' => view('courses/index', ['courses' => $courses])
+            'title'       => 'Courses',   
+            'content'     => view('courses/index', [
+                'courses'     => $courses,
+                'enrolledIds' => $enrolledIds
+            ])
         ];
 
         return view('view_template_01', $data);
     }
-
 
     public function create()
     {

@@ -10,29 +10,32 @@
   <!-- Edit Course Form -->
   <div class="card shadow-sm border-0">
     <div class="card-body">
-      <form method="post" action="/courses/update/<?= $course['id'] ?>">
-        
+      <form id="editCourseForm" method="post" action="/courses/update/<?= $course['id'] ?>" novalidate>
         <div class="mb-3">
           <label class="form-label">Course Code</label>
           <input type="text" class="form-control" name="course_code" 
-                 value="<?= esc($course['course_code']) ?>" required>
+                value="<?= esc($course['course_code']) ?>" required>
+          <div class="invalid-feedback">Course code is required.</div>
         </div>
 
         <div class="mb-3">
           <label class="form-label">Course Name</label>
           <input type="text" class="form-control" name="course_name" 
-                 value="<?= esc($course['course_name']) ?>" required>
+                value="<?= esc($course['course_name']) ?>" required>
+          <div class="invalid-feedback">Course name is required.</div>
         </div>
 
         <div class="mb-3">
           <label class="form-label">Credits</label>
           <input type="number" class="form-control" name="credits" 
-                 value="<?= esc($course['credits']) ?>" required>
+                value="<?= esc($course['credits']) ?>" required>
+          <div class="invalid-feedback">Credits are required.</div>
         </div>
 
         <button class="btn btn-success"><i class="bi bi-save"></i> Update</button>
         <a href="/courses" class="btn btn-secondary">Back</a>
       </form>
+
     </div>
   </div>
 
