@@ -1,68 +1,49 @@
-# CodeIgniter 4 Application Starter
+# Mission 4 Enhancing Interactivity with DOM & JS
 
-## What is CodeIgniter?
+## 📌 Overview
+This assignment extends the **Academic Portal** by implementing **interactive features using the DOM and JavaScript**.  
+The portal manages courses, students, and enrollments, and is enhanced with client-side scripting to improve usability and real-time interactivity.  
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+It provides two roles:
+- **Admin**: manage courses and students.  
+- **Student**: register an account, enroll in courses, and view their own enrolled courses with total credits (SKS).  
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## ✨ Features
+- Authentication (Login & Register)  
+- Student enrollment system  
+- Course management (CRUD)  
+- View enrolled courses with total credits (SKS)  
+- Form validation with error messages and red border highlight for invalid inputs  
+- Modern UI with Bootstrap & icons  
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Technologies Used
+- **Backend**: PHP (CodeIgniter 4)  
+- **Database**: PostgreSQL  
+- **Frontend**: HTML, CSS, Bootstrap 5, JavaScript  
+- **Icons**: Bootstrap Icons  
+- **Version Control**: Git & GitHub  
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+## Screenshots
+### 1. Login Page
+<img width="940" height="431" alt="image" src="https://github.com/user-attachments/assets/bcda9b02-a38e-4124-ac95-3f113a8c956d" />
 
-## Installation & updates
+### 2. Register Page
+<img width="940" height="423" alt="image" src="https://github.com/user-attachments/assets/952d6071-4a0a-4b85-8a72-14d0ed34016b" />
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+### 3. Homepage (Admin)
+<img width="940" height="425" alt="image" src="https://github.com/user-attachments/assets/60569856-4777-4f36-9ad9-a72ef1486414" />
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+### 4. Manage Courses (Admin)
+<img width="940" height="418" alt="image" src="https://github.com/user-attachments/assets/a9a6e384-ce4d-4bab-be96-81da839375e5" />
 
-## Setup
+### 5. Manage Students (Admin)
+<img width="940" height="429" alt="image" src="https://github.com/user-attachments/assets/94c95feb-0056-41a1-a3b3-9e81d8efcd7a" />
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+### 6. Homepage (Student)
+<img width="940" height="430" alt="image" src="https://github.com/user-attachments/assets/06921e8a-0070-439d-b5d9-78fc6a836178" />
 
-## Important Change with index.php
+### 7. View Course (Student)
+<img width="940" height="438" alt="image" src="https://github.com/user-attachments/assets/78f3cc16-e67a-4ffc-b01b-0efaeca035a1" />
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-
-## Repository Management
-
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 8.1 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+### 8. My Courses (Student)
+<img width="940" height="428" alt="image" src="https://github.com/user-attachments/assets/e68d72f5-712d-4266-bd69-b719752a01a7" />
